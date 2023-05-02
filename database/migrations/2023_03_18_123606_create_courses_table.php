@@ -25,7 +25,8 @@ return new class extends Migration
             $table->string('image');
             $table->string('tags');
             $table->string('timeCourse');
-            
+            $table->string('condition');
+
             $table->integer('viewCount')->default(0);
             $table->integer('commentCount')->default(0);
             $table->integer('likeCount')->default(0);

@@ -7,6 +7,7 @@ use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Skill\SkillController;
 use App\Http\Controllers\Course\CourseController;
 use App\Http\Controllers\Article\ArticleController;
+use App\Http\Controllers\Contact\ContactController;
 use App\Http\Controllers\Coupone\CouponeController;
 use App\Http\Controllers\Episode\EpisodeController;
 use App\Http\Controllers\Payment\PaymentController;
@@ -48,5 +49,7 @@ Route::post('/payment/send' , [PaymentController::class , 'send']);
 Route::post('/payment/verify', [PaymentController::class, 'verify']);
 
 Route::get('/index', [HomeController::class, 'show']);
+Route::get('/lastCourse', [CourseController::class, 'lastCourse']);
 
+Route::apiResource('contact' , ContactController::class);
 

@@ -29,6 +29,7 @@ class CourseResource extends JsonResource
             'status_value' => $this->getRawOriginal('status'),
             'status' => $this->status,
             'timeCourse' => $this->timeCourse,
+            'condition' => $this->condition,
             'price' => $this->price,
             'quantity' => $this->quantity,
             'is_sale' => $this->is_sale,
