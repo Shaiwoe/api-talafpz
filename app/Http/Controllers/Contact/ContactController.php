@@ -33,6 +33,7 @@ class ContactController extends ApiController
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
+            'phone' => 'required|phone',
             'email' => 'required|email',
             'subject' => 'required|string',
             'text' => 'required|string',
@@ -46,6 +47,7 @@ class ContactController extends ApiController
 
         Contact::create([
             'name' => $request->name,
+            'phone' => $request->phone,
             'email' => $request->email,
             'subject' => $request->subject,
             'text' => $request->text
