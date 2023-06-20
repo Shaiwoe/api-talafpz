@@ -33,7 +33,7 @@ class ContactController extends ApiController
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
-            'phone' => 'required|phone',
+            'phone' => 'required', 'regex:/^(\+98|0)?9\d{9}$/',
             'email' => 'required|email',
             'subject' => 'required|string',
             'text' => 'required|string',

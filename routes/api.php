@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Skill\SkillController;
 use App\Http\Controllers\Course\CourseController;
@@ -53,3 +54,31 @@ Route::get('/lastCourse', [CourseController::class, 'lastCourse']);
 
 Route::apiResource('contact' , ContactController::class);
 
+////////////////////// Admin Paanel ////////////////////////
+Route::group(['middleware' => ['auth:sanctum']], function() {
+    // Route::get('/categories/{category}/children', [CategoryController::class, 'children']);
+    // Route::get('/categories/{category}/parent', [CategoryController::class, 'parent']);
+    // Route::get('/categories/{category}/products', [CategoryController::class, 'products']);
+    // Route::get('/categories-list', [CategoryController::class, 'listAdmin']);
+
+    // Route::apiResource('products', ProductController::class);
+
+    // Route::get('/transactions/chart', [TransactionController::class, 'chart']);
+    // Route::get('/transactions', [TransactionController::class, 'index']);
+
+
+    // Route::apiResource('coupons', CouponController::class);
+
+    // Route::apiResource('orders', OrderController::class);
+
+    Route::apiResource('admin-panel/users', UserController::class);
+    Route::apiResource('admin-panel/categories', CategoryArticleController::class);
+
+    Route::apiResource('admin-panel/articles' , ArticleController::class);
+
+    Route::post('admin-panel/auth/register', [AuthController::class, 'register']);
+    Route::post('admin-panel/auth/me', [AuthController::class, 'me']);
+    Route::post('admin-panel/auth/logout', [AuthController::class, 'logoutAdmin']);
+});
+
+Route::post('/admin-panel/auth/login', [AuthController::class, 'loginAdmin']);
